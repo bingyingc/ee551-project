@@ -1,165 +1,255 @@
-import random
-import sys
-import tkinter as tk
+from tkinter import *
 from tkinter import messagebox
-from turtle import *
-from freegames import line
+
+window=Tk()
+window.title("Tic-Tac-Toe")
+window.geometry("400x250")
+
+lable1=Label(window,text="Tic-Tac-Toe",font=('Helvetica','15'))
+lable1.grid(row=0,column=0)
+turn=1
+
+def clicked1():
+    global turn
+    if button1["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button1["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button1["text"]="O"
+        check()
+
+def clicked2():
+    global turn
+    if button2["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button2["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button2["text"]="O"
+        check()
+
+def clicked3():
+    global turn
+    if button3["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button3["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button3["text"]="O"
+        check()
+
+def clicked4():
+    global turn
+    if button4["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button4["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button4["text"]="O"
+        check()
 
 
-class TicTacToe:
-    def __init__(self):
-        # "board" is a list of 10 strings representing the board (ignore index 0)
-        self.cubes = [
-            {'x': '-200.0', 'y': '66.0', 'position': '0', 'item': ''},
-            {'x': '-67.0', 'y': '66.0', 'position': '1', 'item': ''},
-            {'x': '66.0', 'y': '66.0', 'position': '2', 'item': ''},
-            {'x': '-200.0', 'y': '-67.0', 'position': '3', 'item': ''},
-            {'x': '-67.0', 'y': '-67.0', 'position': '4', 'item': ''},
-            {'x': '66.0', 'y': '-67.0', 'position': '5', 'item': ''},
-            {'x': '-200.0', 'y': '-200.0', 'position': '6', 'item': ''},
-            {'x': '-67.0', 'y': '-200.0', 'position': '7', 'item': ''},
-            {'x': '66.0', 'y': '-200.0', 'position': '8', 'item': ''}]
-        self.tmpPosition = 0
+def clicked5():
+    global turn
+    if button5["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button5["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button5["text"]="O"
+        check()
 
+def clicked6():
+    global turn
+    if button6["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button6["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button6["text"]="O"
+        check()
 
-    def drawBoard(self):
-        # This method prints out the board with current plays adjacent to a board with index.
-        setup(410, 410, 370, 0)
-        hideturtle()
-        tracer(False)
-        line(-67, 200, -67, -200)
-        line(67, 200, 67, -200)
-        line(-200, -67, 200, -67)
-        line(-200, 67, 200, 67)
-        update()
+def clicked7():
+    global turn
+    if button7["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button7["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button7["text"]="O"
+        check()
 
-    def boardFull(self):
-        # This method checks if the board is already full and returns True. Returns false otherwise
-        for i in range(len(self.cubes)):
-            if self.cubes[i]['item'] == "":
-                break
-            else:
-                return True
-        return False
+def clicked8():
+    global turn
+    if button8["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button8["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button8["text"]="O"
+        check()
 
-    # def cellIsEmpty(self, cell):
-    #     if cell == 0 or cell > 9:
-    #         return False
-    #     else:
-    #         return self.board[cell] == " "
+def clicked9():
+    global turn
+    if button9["text"] =="" :
+        if turn == 1 :
+            turn = 2
+            button9["text"]="X"
+        elif turn ==2 :
+            turn = 1
+            button9["text"]="O"
+        check()
 
-    def drawx(self, x, y):
-        "Draw X player."
-        line(x, y, x + 133, y + 133)
-        line(x, y + 133, x + 133, y)
-        print('tmpPosition: '+str(self.tmpPosition))
-        self.cubes[self.tmpPosition]['item'] = 'x'
-        print('self.cubes ' + self.cubes[self.tmpPosition]['item'])
+flag=1
+def check():
+    b1 = button1["text"]
+    b2 = button2["text"]
+    b3 = button3["text"]
+    b4 = button4["text"]
+    b5 = button5["text"]
+    b6 = button6["text"]
+    b7 = button7["text"]
+    b8 = button8["text"]
+    b9 = button9["text"]
+    global  flag
+    flag+=1
+    if b1==b2==b3 and b1!="":   #across the top
+        win(button1["text"])
+    if b4==b5==b6 and b4!="":   #across the middle
+        win(button4["text"])
+    if b7==b8==b9 and b7!="":   #across the bottom
+        win(button7["text"])
+    if b1==b4==b7 and b1!="":   #down the left side
+        win(button1["text"])
+    if b2==b5==b8 and b2!="":   #down the middle side
+        win(button1["text"])
+    if b3==b6==b9 and b3!="":   #down the right side
+        win(button1["text"])
+    if b1==b5==b9 and b3!="":   # diagonal
+        win(button1["text"])
+    if b7==b5==b3 and b3!="":   # diagonal
+        win(button7["text"])
 
-    def drawo(self, x, y):
-        "Draw O player."
-        up()
-        goto(x + 67, y + 5)
-        down()
-        circle(62)
-        self.cubes[self.tmpPosition]['item'] = 'o'
+def win(player):
+    ans = "player "+player+" wins"
+    messagebox.showinfo("Congratulations",ans)
+    window.destroy()
 
-    # def floor(self,value):
-    #     "Round value down to grid with square size 133."
-    #     return ((value + 200) // 133) * 133 - 200
-    #
+button1= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked1
+)
+button1.grid(row=1,column=1)
 
+button2= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked2
+)
+button2.grid(row=2,column=1)
 
-    def assignMove(self, x, y):
-        state = {'player': 0}
-        # assigns the cell of the board to the character ch
+button3= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked3
+)
+button3.grid(row=3,column=1)
 
-        x = ((x + 200) // 133) * 133 - 200
-        y = ((y + 200) // 133) * 133 - 200
-        print("x: " + str(x), "y: " + str(y))  # get x y values
-        for i in range(len(self.cubes)):
-            print('item '+str(i)+':'+self.cubes[i]['item'])
-            if self.cubes[i]['item'] == '':
-                if self.cubes[i]['x'] == str(x) and self.cubes[i]['y'] == str(y):
-                    print(self.cubes[i]['x'] + ",,," + self.cubes[i]['y'])
-                    self.tmpPosition = i
-                    break
-                else:
-                    continue
-            else:
-                print('Occupied')
-                print(messagebox.showwarning(title='Error', message='this cube is occupied'))
-                return
-        # use x and y to find cell number
-        player = state['player']
-        if player == 0:
-            print('player==0')
-            self.drawx(x,y)
-        else:
-            self.drawo(x,y)
-        update()
-        state['player'] = not player
-        print("****************")
-        return
+button4= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked4
+)
+button4.grid(row=1,column=2)
 
-    def whoWon(self):
-        # returns the symbol of the player who won if there is a winner, otherwise it returns an empty string.
-        if self.isWinner("x"):
-            return "x"
-        elif self.isWinner("o"):
-            return "o"
-        else:
-            return ""
+button5= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked5
+)
+button5.grid(row=2,column=2)
 
-    def isWinner(self, ch):
-        # Given a player's letter, this method returns True if that player has won.
-        return ((self.cubes[0]['position'] == ch and self.cubes[1]['position'] == ch and self.cubes[2][
-            'position'] == ch) or  # across the top
-                (self.cubes[3]['position'] == ch and self.cubes[4]['position'] == ch and self.cubes[5][
-                    'position'] == ch) or  # across the middle
-                (self.cubes[6]['position'] == ch and self.cubes[7]['position'] == ch and self.cubes[8][
-                    'position'] == ch) or  # across the bottom
-                (self.cubes[0]['position'] == ch and self.cubes[3]['position'] == ch and self.cubes[6][
-                    'position'] == ch) or  # down the left side
-                (self.cubes[1]['position'] == ch and self.cubes[4]['position'] == ch and self.cubes[7][
-                    'position'] == ch) or  # down the middle
-                (self.cubes[2]['position'] == ch and self.cubes[5]['position'] == ch and self.cubes[8][
-                    'position'] == ch) or  # down the right side
-                (self.cubes[0]['position'] == ch and self.cubes[4]['position'] == ch and self.cubes[8][
-                    'position'] == ch) or  # diagonal
-                (self.cubes[2]['position'] == ch and self.cubes[4]['position'] == ch and self.cubes[6][
-                    'position'] == ch))  # diagonal
+button6= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked6
+)
+button6.grid(row=3,column=2)
 
+button7= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked7
+)
+button7.grid(row=1,column=3)
 
-def UaU():
-    myBoard = TicTacToe()
-    turn = 'x'
-    gameIsOn = True
-    myBoard.drawBoard()
-    # while gameIsOn:
-        # print("It is the turn for", turn, ". ", end="")
-    move = "0"
-        # myBoard.assignMove(int(move), turn)
-    onscreenclick(myBoard.assignMove)
-    winner = myBoard.whoWon()
+button8= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked8
+)
+button8.grid(row=2,column=3)
 
-    if winner != '':
-        myBoard.drawBoard()
-        print(turn, "wins. Congrats!")
-        input("Press Enter to continue")
-        gameIsOn = False
-    elif myBoard.boardFull():
-        myBoard.drawBoard()
-        print("It's a tie.")
-        input("Press Enter to continue")
-        gameIsOn = False
-    elif turn == "x":
-        turn = "o"
-    else:
-        turn = "x"
-    return
+button9= Button(
+    window,
+    text="",
+    bg="gray",
+    fg="black",
+    width=3,
+    height=1,
+    font=('Helvetica','20'),
+    command=clicked9
+)
+button9.grid(row=3,column=3)
 
-print("Welcome to Tic Tac Toe Series")
-myGameLoop = True
-while myGameLoop:
-    UaU()
+window.mainloop()
