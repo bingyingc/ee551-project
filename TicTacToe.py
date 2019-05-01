@@ -109,7 +109,7 @@ def clicked9():
             button9["text"]="O"
         check()
 
-flag=1
+flag=0
 def check():
     b1 = button1["text"]
     b2 = button2["text"]
@@ -138,7 +138,10 @@ def check():
         win(button1["text"])
     if b7==b5==b3 and b3!="":   # diagonal
         win(button7["text"])
-
+    if flag==9:
+        messagebox.showinfo("Tie","Match Tied")
+        window.destroy()
+        
 def win(player):
     ans = "player "+player+" wins"
     messagebox.showinfo("Congratulations",ans)
